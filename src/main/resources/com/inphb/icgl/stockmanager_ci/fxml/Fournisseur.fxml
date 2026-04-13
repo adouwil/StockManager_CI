@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<SplitPane dividerPositions="0.62" styleClass="page-split" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.inphb.icgl.stockmanager_ci.controller.FournisseurController">
+
+    <VBox spacing="10" styleClass="page-content">
+        <Label fx:id="lblFournisseurs" styleClass="page-title" text="  Fournisseurs" />
+        <HBox alignment="CENTER_LEFT" spacing="8">
+            <TextField fx:id="txtRecherche" prefWidth="320" promptText="🔍 Rechercher par nom, téléphone, ville…" styleClass="search-field" />
+        </HBox>
+        <TableView fx:id="tableFour" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colId" prefWidth="50" text="ID" />
+                <TableColumn fx:id="colNom" prefWidth="200" text="Nom" />
+                <TableColumn fx:id="colTel" prefWidth="130" text="Téléphone" />
+                <TableColumn fx:id="colEmail" prefWidth="180" text="Email" />
+                <TableColumn fx:id="colVille" prefWidth="120" text="Ville" />
+            </columns>
+            <placeholder><Label text="Aucun fournisseur enregistré" /></placeholder>
+        </TableView>
+        <HBox alignment="CENTER_LEFT" spacing="8" styleClass="pag-bar">
+            <Button fx:id="btnPrecedent" onAction="#handlePrecedent" styleClass="btn-pag" text="‹ Préc." />
+            <Label fx:id="lblPage" styleClass="pag-label" text="Page 1 / 1" />
+            <Button fx:id="btnSuivant" onAction="#handleSuivant" styleClass="btn-pag" text="Suiv. ›" />
+        </HBox>
+    </VBox>
+
+    <VBox spacing="12" styleClass="form-panel">
+        <Label styleClass="form-title" text="Formulaire fournisseur" />
+        <VBox spacing="5"><Label styleClass="form-label" text="Nom *" />
+            <TextField fx:id="txtNom" promptText="Ex : SIFCA Distribution" styleClass="form-field" /></VBox>
+        <VBox spacing="5"><Label styleClass="form-label" text="Téléphone" />
+            <TextField fx:id="txtTelephone" promptText="27 20 25 00 00" styleClass="form-field" /></VBox>
+        <VBox spacing="5"><Label styleClass="form-label" text="Email" />
+            <TextField fx:id="txtEmail" promptText="contact@fournisseur.ci" styleClass="form-field" /></VBox>
+        <VBox spacing="5"><Label styleClass="form-label" text="Adresse" />
+            <TextField fx:id="txtAdresse" promptText="Zone industrielle..." styleClass="form-field" /></VBox>
+        <VBox spacing="5"><Label styleClass="form-label" text="Ville" />
+            <TextField fx:id="txtVille" promptText="Abidjan" styleClass="form-field" /></VBox>
+        <Label fx:id="lblStatut" styleClass="lbl-statut" text="" wrapText="true" />
+        <HBox spacing="10.0">
+            <Button fx:id="btnSauvegarder" maxWidth="Infinity" onAction="#handleSauvegarder" styleClass="btn-primary" text="Ajouter" HBox.hgrow="ALWAYS" />
+            <Button onAction="#handleAnnuler" prefHeight="25.0" prefWidth="90.0" styleClass="btn-secondary" text="Annuler" />
+           <Button maxWidth="Infinity" onAction="#handleSupprimer" prefHeight="25.0" prefWidth="121.0" styleClass="btn-danger" text="Supprimer" />
+        </HBox>
+    </VBox>
+</SplitPane>

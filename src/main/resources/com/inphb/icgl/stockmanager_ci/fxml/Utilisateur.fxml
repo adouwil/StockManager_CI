@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<SplitPane dividerPositions="0.62" styleClass="page-split" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.inphb.icgl.stockmanager_ci.controller.UtilisateurController">
+
+    <!-- Gauche : TableView -->
+    <VBox spacing="10" styleClass="page-content">
+        <Label fx:id="lblUtilisateurs" styleClass="page-title" text="  Utilisateurs  —  Module Administrateur" />
+
+        <HBox alignment="CENTER_LEFT" spacing="8">
+            <TextField fx:id="txtRecherche" prefWidth="300" promptText="🔍 Rechercher par nom ou login…" styleClass="search-field" />
+        </HBox>
+
+        <TableView fx:id="tableUsr" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colId" prefWidth="55" text="ID" />
+                <TableColumn fx:id="colNom" prefWidth="233.33334350585938" text="Nom complet" />
+                <TableColumn fx:id="colLogin" prefWidth="140.0" text="Login" />
+                <TableColumn fx:id="colRole" minWidth="0.0" prefWidth="150.0" text="Rôle" />
+                <TableColumn fx:id="colStatut" prefWidth="130.0" text="Statut" />
+            </columns>
+            <placeholder><Label text="Aucun utilisateur" /></placeholder>
+        </TableView>
+
+        <HBox alignment="CENTER_LEFT" spacing="8" styleClass="pag-bar">
+            <Button fx:id="btnPrecedent" onAction="#handlePrecedent" styleClass="btn-pag" text="‹ Préc." />
+            <Label fx:id="lblPage" styleClass="pag-label" text="Page 1 / 1" />
+            <Button fx:id="btnSuivant" onAction="#handleSuivant" styleClass="btn-pag" text="Suiv. ›" />
+        </HBox>
+    </VBox>
+
+    <!-- Droite : Formulaire -->
+    <VBox spacing="12" styleClass="form-panel">
+        <Label styleClass="form-title" text="Formulaire utilisateur" />
+
+        <VBox spacing="5">
+            <Label styleClass="form-label" text="Nom complet *" />
+            <TextField fx:id="txtNomComplet" promptText="Ex: Kouamé N'Guessan" styleClass="form-field" />
+        </VBox>
+
+        <VBox spacing="5">
+            <Label styleClass="form-label" text="Login *" />
+            <TextField fx:id="txtLogin" promptText="Ex: kouame" styleClass="form-field" />
+        </VBox>
+
+        <VBox spacing="5">
+            <Label styleClass="form-label" text="Mot de passe *" />
+            <PasswordField fx:id="txtMotDePasse" promptText="••••••••" styleClass="form-field" />
+            <Label fx:id="lblMdpInfo" styleClass="form-hint" text="" />
+        </VBox>
+
+        <GridPane hgap="10" vgap="8">
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" />
+                <ColumnConstraints hgrow="ALWAYS" />
+            </columnConstraints>
+            <VBox spacing="5" GridPane.columnIndex="0">
+                <Label styleClass="form-label" text="Rôle">
+               <padding>
+                  <Insets left="2.0" />
+               </padding></Label>
+                <ComboBox fx:id="cbRole" maxWidth="Infinity" styleClass="form-combo" />
+            </VBox>
+            <VBox alignment="CENTER_LEFT" spacing="5" GridPane.columnIndex="1">
+                <Label styleClass="form-label" text="Statut">
+               <padding>
+                  <Insets left="2.0" />
+               </padding></Label>
+                <CheckBox fx:id="chkActif" text="Compte actif" />
+            </VBox>
+         <rowConstraints>
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+
+        <Label fx:id="lblStatut" styleClass="lbl-statut" text="" wrapText="true" />
+
+        <HBox spacing="8">
+            <Button fx:id="btnSauvegarder" maxWidth="Infinity" onAction="#handleSauvegarder" styleClass="btn-primary" text="Créer" HBox.hgrow="ALWAYS" />
+            <Button onAction="#handleAnnuler" prefHeight="25.0" prefWidth="85.0" styleClass="btn-secondary" text="Annuler" />
+           <Button maxWidth="Infinity" onAction="#handleSupprimer" prefHeight="25.0" prefWidth="145.0" styleClass="btn-danger" text="Supprimer" />
+        </HBox>
+
+        <Separator />
+        <Label styleClass="form-hint" text="⚠ Un administrateur ne peut pas supprimer son propre compte." wrapText="true" />
+    </VBox>
+
+</SplitPane>

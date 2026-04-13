@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="rootPane" prefHeight="750" prefWidth="1200" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.inphb.icgl.stockmanager_ci.controller.MainLayoutController">
+
+    <!--  TOP : barre de menu  -->
+    <top>
+        <VBox>
+            <MenuBar styleClass="main-menubar">
+                <Menu text="Application">
+                    <MenuItem fx:id="menuDashboard" onAction="#ouvrirDashboard" text="  Tableau de bord" />
+                    <SeparatorMenuItem />
+                    <MenuItem fx:id="menuDeconnexion" onAction="#handleDeconnexion" text="  Se déconnecter" />
+                    <MenuItem fx:id="menuQuitter" onAction="#handleQuitter" text="  Quitter" />
+                </Menu>
+                <Menu text="Gestion">
+                    <MenuItem fx:id="menuCategories" onAction="#ouvrirCategories" text="  Catégories" />
+                    <MenuItem fx:id="menuFournisseurs" onAction="#ouvrirFournisseurs" text="  Fournisseurs" />
+                    <MenuItem fx:id="menuProduits" onAction="#ouvrirProduits" text="  Produits" />
+                    <MenuItem fx:id="menuMouvements" onAction="#ouvrirMouvements" text="  Mouvements" />
+                </Menu>
+                <Menu text="Administration">
+                    <MenuItem fx:id="menuUtilisateurs" onAction="#ouvrirUtilisateurs" text="  Utilisateurs" />
+                </Menu>
+            </MenuBar>
+
+            <!-- Bandeau utilisateur -->
+            <HBox alignment="CENTER_LEFT" spacing="10" styleClass="top-bar">
+                <Label styleClass="top-brand" text="StockManager CI" />
+                <Label style="-fx-text-fill: rgba(255,255,255,.4);" text="—" />
+                <Label styleClass="top-context" text="Sup-Market ELOIM - Adjamé" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label styleClass="top-hint" text="Connecté :" />
+                <Label fx:id="lblNomUtilisateur" styleClass="top-user" />
+                <Label fx:id="lblRole" styleClass="top-role" />
+            </HBox>
+        </VBox>
+    </top>
+
+    <!--  CENTER : contenu dynamique chargé par le contrôleur  -->
+    <!-- Le centre est vide au démarrage ; le contrôleur charge Dashboard.fxml -->
+
+</BorderPane>

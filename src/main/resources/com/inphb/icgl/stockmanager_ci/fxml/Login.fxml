@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane prefHeight="500" prefWidth="420" styleClass="login-root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.inphb.icgl.stockmanager_ci.controller.LoginController">
+
+    <VBox alignment="CENTER" spacing="0" styleClass="login-card">
+
+        <Label styleClass="login-brand" text="StockManager CI" />
+        <Label styleClass="login-context" text="Sup-Market ELOIM - Adjamé" />
+
+        <VBox spacing="14" style="-fx-padding: 28 32 0 32;">
+
+            <VBox spacing="5">
+                <Label styleClass="form-label" text="Nom d'utilisateur" />
+                <TextField fx:id="txtLogin" promptText="Ex : Wilfried07" styleClass="form-field" />
+            </VBox>
+
+            <VBox spacing="5">
+                <Label styleClass="form-label" text="Mot de passe" />
+                <PasswordField fx:id="txtMotDePasse" promptText="••••••••" styleClass="form-field" />
+            </VBox>
+
+            <Label fx:id="lblErreur" styleClass="lbl-erreur" text="" wrapText="true" />
+            <Label fx:id="lblTentatives" styleClass="lbl-tentatives" text="" wrapText="true" />
+
+            <Button fx:id="btnConnexion" maxWidth="Infinity" onAction="#handleConnexion" styleClass="btn-primary" text="Se connecter" />
+
+            <Button maxWidth="Infinity" onAction="#handleQuitter" styleClass="btn-secondary" text="Quitter" />
+        </VBox>
+
+        <Region VBox.vgrow="ALWAYS" />
+
+
+    </VBox>
+</StackPane>

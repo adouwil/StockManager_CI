@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefHeight="320" prefWidth="520" styleClass="splash-root" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+
+    <!-- Fond dégradé vert -->
+    <VBox alignment="CENTER" spacing="18" styleClass="splash-box">
+   
+        <Label styleClass="splash-title" text="Sup-Market ELOIM - Adjamé">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </Label>
+
+        <ProgressBar prefWidth="240" progress="-1" styleClass="splash-progress" />
+
+        <Label styleClass="splash-ver" text="INP-HB IC-GL 2025-2026">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font></Label>
+
+        <Label alignment="BOTTOM_CENTER" lineSpacing="2.0" styleClass="splash-ver" text="Realisé par :" underline="true">
+            <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font></Label>
+        <Label alignment="BOTTOM_CENTER" lineSpacing="2.0" styleClass="splash-sub" text="ADOU Koffi Wilfried / TRAORE Née Agoh Bertine / KONE Abdoulaye">
+            <font>
+                <Font name="Arial Bold" size="13.0" />
+            </font></Label>
+    </VBox>
+   <ImageView fitHeight="374.0" fitWidth="589.0" opacity="0.14" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../images/logo.png" />
+      </image>
+   </ImageView>
+</StackPane>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox spacing="16" styleClass="page-content" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.inphb.icgl.stockmanager_ci.controller.MouvementController">
+
+    <Label fx:id="lblMouvements" styleClass="page-title" text="  Mouvements de Stock" />
+
+    <!--  Formulaire de saisie  -->
+    <VBox spacing="12" styleClass="form-section">
+        <Label styleClass="form-title" text="Nouveau mouvement" />
+
+        <GridPane hgap="14" vgap="10">
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="35" />
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="20" />
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="15" />
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="30" />
+            </columnConstraints>
+
+            <VBox spacing="4" GridPane.columnIndex="0">
+                <Label styleClass="form-label" text="Produit *" />
+                <ComboBox fx:id="cbProduit" maxWidth="Infinity" promptText="-- Sélectionner un produit --" styleClass="form-combo" />
+            </VBox>
+            <VBox spacing="4" GridPane.columnIndex="1">
+                <Label styleClass="form-label" text="Type *" />
+                <ComboBox fx:id="cbType" maxWidth="Infinity" styleClass="form-combo" />
+            </VBox>
+            <VBox spacing="4" GridPane.columnIndex="2">
+                <Label styleClass="form-label" text="Quantité *" />
+                <TextField fx:id="txtQuantite" promptText="0" styleClass="form-field" />
+            </VBox>
+            <VBox spacing="4" GridPane.columnIndex="3">
+                <Label styleClass="form-label" text="Motif" />
+                <TextField fx:id="txtMotif" promptText="Ex: Vente client Adjamé" styleClass="form-field" />
+            </VBox>
+         <rowConstraints>
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+
+        <HBox alignment="CENTER_LEFT" spacing="16">
+            <Label fx:id="lblStockActuel" styleClass="lbl-stock-info" text="" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="lblStatut" styleClass="lbl-statut" text="" />
+            <Button onAction="#handleEnregistrer" prefWidth="160" styleClass="btn-primary" text="Enregistrer" />
+        </HBox>
+    </VBox>
+
+    <!--  Historique paginé  -->
+    <VBox spacing="8" styleClass="table-card" VBox.vgrow="ALWAYS">
+        <HBox alignment="CENTER_LEFT" spacing="10">
+            <Label styleClass="section-title" text="Historique des mouvements" />
+            <Region HBox.hgrow="ALWAYS" />
+            <TextField fx:id="txtRecherche" prefWidth="280" promptText="🔍 Filtrer par produit, type, motif…" styleClass="search-field" />
+        </HBox>
+
+        <TableView fx:id="tableMvt" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colDate" prefWidth="161.33333837985992" text="Date / Heure" />
+                <TableColumn fx:id="colProduit" prefWidth="275.0" text="Produit" />
+                <TableColumn fx:id="colType" prefWidth="110.0" text="Type" />
+                <TableColumn fx:id="colQte" prefWidth="125.33328247070312" text="Quantité" />
+                <TableColumn fx:id="colMotif" prefWidth="250.0" text="Motif" />
+                <TableColumn fx:id="colUser" prefWidth="200.0" text="Utilisateur" />
+            </columns>
+            <placeholder><Label text="Aucun mouvement enregistré" /></placeholder>
+        </TableView>
+
+        <HBox alignment="CENTER_LEFT" spacing="8" styleClass="pag-bar">
+            <Button fx:id="btnPrecedent" onAction="#handlePrecedent" styleClass="btn-pag" text="‹ Préc." />
+            <Label fx:id="lblPage" styleClass="pag-label" text="Page 1 / 1" />
+            <Button fx:id="btnSuivant" onAction="#handleSuivant" styleClass="btn-pag" text="Suiv. ›" />
+        </HBox>
+    </VBox>
+
+</VBox>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<SplitPane dividerPositions="0.63" styleClass="page-split" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.inphb.icgl.stockmanager_ci.controller.ProduitController">
+
+    <!-- Gauche : TableView -->
+    <VBox spacing="10" styleClass="page-content">
+        <Label fx:id="lblProduits" styleClass="page-title" text="  Produits" />
+        <Label fx:id="lblAlerte" styleClass="lbl-alerte-banner" text="" wrapText="true" />
+
+        <HBox alignment="CENTER_LEFT" spacing="8">
+            <TextField fx:id="txtRecherche" prefWidth="340" promptText="🔍 Désignation, référence, catégorie, fournisseur…" styleClass="search-field" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button fx:id="btnExport" onAction="#handleExporterXLSX" styleClass="btn-export" text=" Export XLSX" />
+        </HBox>
+
+        <TableView fx:id="tableProduits" VBox.vgrow="ALWAYS">
+            <columns>
+                <TableColumn fx:id="colRef" prefWidth="90" text="Référence" />
+                <TableColumn fx:id="colDesignation" prefWidth="210" text="Désignation" />
+                <TableColumn fx:id="colCategorie" prefWidth="110" text="Catégorie" />
+                <TableColumn fx:id="colFournisseur" prefWidth="142.00006103515625" text="Fournisseur" />
+                <TableColumn fx:id="colPrix" prefWidth="95.33331298828125" text="Prix (FCFA)" />
+                <TableColumn fx:id="colQte" prefWidth="74.0" text="Stock" />
+                <TableColumn fx:id="colMin" prefWidth="40.66668701171875" text="Min." />
+                <TableColumn fx:id="colUnite" prefWidth="70" text="Unité" />
+            </columns>
+            <placeholder><Label text="Aucun produit enregistré" /></placeholder>
+        </TableView>
+
+        <HBox alignment="CENTER_LEFT" spacing="8" styleClass="pag-bar">
+            <Button fx:id="btnPrecedent" onAction="#handlePrecedent" styleClass="btn-pag" text="‹ Préc." />
+            <Label fx:id="lblPage" styleClass="pag-label" text="Page 1 / 1" />
+            <Button fx:id="btnSuivant" onAction="#handleSuivant" styleClass="btn-pag" text="Suiv. ›" />
+        </HBox>
+    </VBox>
+
+    <!-- Droite : Formulaire -->
+    <ScrollPane fitToWidth="true" styleClass="form-scroll">
+    <VBox spacing="10" styleClass="form-panel">
+        <Label styleClass="form-title" text="Formulaire produit" />
+
+        <GridPane hgap="10" vgap="8">
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" />
+                <ColumnConstraints hgrow="ALWAYS" />
+            </columnConstraints>
+
+            <VBox spacing="4" GridPane.columnIndex="0">
+                <Label styleClass="form-label" text="Référence *" />
+                <TextField fx:id="txtReference" promptText="ALI-001" styleClass="form-field" />
+            </VBox>
+            <VBox spacing="4" GridPane.columnIndex="1">
+                <Label styleClass="form-label" text="Désignation *" />
+                <TextField fx:id="txtDesignation" promptText="Huile Dinor 5L" styleClass="form-field" />
+            </VBox>
+
+            <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <Label styleClass="form-label" text="Catégorie" />
+                <ComboBox fx:id="cbCategorie" maxWidth="Infinity" styleClass="form-combo" />
+            </VBox>
+            <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <Label styleClass="form-label" text="Fournisseur" />
+                <ComboBox fx:id="cbFournisseur" maxWidth="Infinity" styleClass="form-combo" />
+            </VBox>
+
+            <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                <Label styleClass="form-label" text="Prix unitaire (FCFA) *" />
+                <TextField fx:id="txtPrix" promptText="0.00" styleClass="form-field" />
+            </VBox>
+            <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <Label styleClass="form-label" text="Unité" />
+                <ComboBox fx:id="cbUnite" maxWidth="Infinity" styleClass="form-combo" />
+            </VBox>
+
+            <VBox spacing="4" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                <Label styleClass="form-label" text="Quantité en stock" />
+                <TextField fx:id="txtQuantite" promptText="0" styleClass="form-field" />
+            </VBox>
+            <VBox spacing="4" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <Label styleClass="form-label" text="Stock minimum *" />
+                <TextField fx:id="txtStockMin" promptText="5" styleClass="form-field" />
+            </VBox>
+            <rowConstraints>
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+               <RowConstraints />
+            </rowConstraints>
+        </GridPane>
+
+        <Label fx:id="lblStatut" styleClass="lbl-statut" text="" wrapText="true" />
+
+        <HBox spacing="8">
+            <Button fx:id="btnSauvegarder" maxWidth="Infinity" onAction="#handleSauvegarder" prefHeight="25.0" prefWidth="206.0" styleClass="btn-primary" text="Ajouter" HBox.hgrow="ALWAYS" />
+            <Button onAction="#handleAnnuler" prefHeight="25.0" prefWidth="112.0" styleClass="btn-secondary" text="Annuler" />
+           <Button maxWidth="Infinity" onAction="#handleSupprimer" prefHeight="25.0" prefWidth="143.0" styleClass="btn-danger" text="Supprimer" />
+        </HBox>
+    </VBox>
+    </ScrollPane>
+</SplitPane>
